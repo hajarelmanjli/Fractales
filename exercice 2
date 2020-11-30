@@ -1,0 +1,31 @@
+import random
+import matplotlib.pyplot as plt
+a = [0.05]
+b = [0]
+for i in range(30000):
+    P = random.uniform(0,1)
+    if 0<=P<=0.02 :
+        xn=0.5
+        a.append(xn)
+        yn=0.27*b[i]
+        b.append(yn)
+    if 0.02<=P<=0.17 :
+        xn=-0.139*a[i]+0.263*b[i]+0.57
+        a.append(xn)
+        yn=0.246*a[i]+0.224*b[i]-0.036
+        b.append(yn)
+    if 0.17<=P<=0.30 :
+        xn=0.17*a[i]-0.215*b[i]+0.408
+        a.append(xn)
+        yn=0.222*a[i]+0.176*b[i]+0.0893
+        b.append(yn)
+    if 0.30<=P<=1 :
+        xn=0.781*a[i]+0.034*b[i]+0.1075
+        a.append(xn)
+        yn=-0.032*a[i]+0.739*b[i]+0.27
+        b.append(yn)
+ax = plt.gca()
+ax.set_xticks([])
+ax.set_yticks([])
+plt.plot(a, b, 'b.')
+plt.show()
